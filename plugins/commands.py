@@ -251,6 +251,7 @@ async def start(client, message):
             
             await msg.edit_caption(f_caption)
             if STREAM_MODE == True:
+                await generate_stream_link(file_id)
                 g = await msg.reply_text(
                     text=f"**•• ʏᴏᴜ ᴄᴀɴ ɢᴇɴᴇʀᴀᴛᴇ ᴏɴʟɪɴᴇ sᴛʀᴇᴀᴍ ʟɪɴᴋ ᴏғ ʏᴏᴜʀ ғɪʟᴇ ᴀɴᴅ ᴀʟsᴏ ғᴀsᴛ ᴅᴏᴡɴʟᴏᴀᴅ ʟɪɴᴋ ғᴏʀ ʏᴏᴜʀ ғɪʟᴇ ᴄʟɪᴄᴋɪɴɢ ᴏɴ ʙᴇʟᴏᴡ ʙᴜᴛᴛᴏɴ 👇**",
                     quote=True,
@@ -312,6 +313,7 @@ async def start(client, message):
         protect_content=True if pre == 'filep' else False,
     )
     if STREAM_MODE == True:
+        await generate_stream_link(file_id)
         g = await x.reply_text(
             text=f"**•• ʏᴏᴜ ᴄᴀɴ ɢᴇɴᴇʀᴀᴛᴇ ᴏɴʟɪɴᴇ sᴛʀᴇᴀᴍ ʟɪɴᴋ ᴏғ ʏᴏᴜʀ ғɪʟᴇ ᴀɴᴅ ᴀʟsᴏ ғᴀsᴛ ᴅᴏᴡɴʟᴏᴀᴅ ʟɪɴᴋ ғᴏʀ ʏᴏᴜʀ ғɪʟᴇ ᴄʟɪᴄᴋɪɴɢ ᴏɴ ʙᴇʟᴏᴡ ʙᴜᴛᴛᴏɴ 👇**",
             quote=True,
@@ -495,6 +497,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             xo = await query.message.reply_text(f'🔐')
             await asyncio.sleep(1)
             await xo.delete()
+            await query.message.reply_text(url=download)
 
 # Don't Remove Credit Tg - @VJ_Botz
 # Subscribe YouTube Channel For Amazing Bot https://youtube.com/@Tech_VJ
@@ -519,7 +522,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             ]]
             reply_markup=InlineKeyboardMarkup(button)
             await query.message.reply_text(
-                text="•• ʟɪɴᴋ ɢᴇɴᴇʀᴀᴛᴇᴅ ☠︎⚔",
+                text="f'{download}",
                 quote=True,
                 disable_web_page_preview=True,
                 reply_markup=reply_markup
